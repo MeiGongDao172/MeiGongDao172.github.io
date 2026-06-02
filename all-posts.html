@@ -1,25 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>所有文章</title>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-</head>
-<body>
-    <div class="wrapper">
-        <header>
-            <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
-            <p>{{ site.description }}</p>
-        </header>
-        <section>
-            <h1>所有文章</h1>
-            <ul>
-                <li><a href="/2026/06/03/第一篇文章.html">第一篇文章</a> - 2026年06月03日</li>
-            </ul>
-        </section>
-        <footer>
-            <p>© {{ site.time | date: '%Y' }} {{ site.title }}</p>
-        </footer>
-    </div>
-</body>
-</html>
+---
+layout: page
+title: 所有文章
+---
+
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      - {{ post.date | date: "%Y年%m月%d日" }}
+    </li>
+  {% endfor %}
+</ul>
