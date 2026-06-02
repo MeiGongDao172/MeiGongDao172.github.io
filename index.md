@@ -16,13 +16,4 @@ layout: default
 - 记录学习笔记
 - 分享有趣的东西
 
-## 最新文章
-
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-      - {{ post.date | date: "%Y年%m月%d日" }}
-    </li>
-  {% endfor %}
-</ul>
+[查看所有文章 →](blog.html)
