@@ -3,12 +3,12 @@ layout: default
 title: 分类
 ---
 
-# 📂 文章分类
+#  文章分类
 
 {% for category in site.categories %}
   <div class="window" style="margin-bottom: 20px;">
     <div class="title-bar">
-      <div class="title-bar-text">📁 {{ category[0] }}</div>
+      <div class="title-bar-text"> {{ category[0] }}</div>
     </div>
     <div class="window-body">
       <ul>
