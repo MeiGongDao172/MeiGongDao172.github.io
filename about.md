@@ -3,21 +3,21 @@ layout: default
 title: 关于
 ---
 
-# 📖 关于本站
+#  关于本站
 
 一些介绍
 
-## 👤 关于我
+##  关于我
 
 一段自我介绍。
 
 
-## 📬 联系我
+##  联系我
 
 你可以通过以下方式找到我：
 
 - GitHub：[MeiGongDao172](https://github.com/MeiGongDao172)
-- 邮箱：
+- 邮箱：mayfuz@163.com
 
 
 ---
