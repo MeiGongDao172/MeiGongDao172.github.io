@@ -16,5 +16,5 @@ layout: default
 - 记录学习笔记
 - 分享有趣的东西
 
-[查看所有文章 →](all-posts.html)
+[查看所有文章 →](all-posts.md)
 
