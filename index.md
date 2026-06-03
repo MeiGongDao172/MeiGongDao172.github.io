@@ -2,19 +2,24 @@
 layout: default
 ---
 
-# 欢迎来到我的博客
+<h1>📝 最近文章</h1>
 
-这是我的个人博客，使用 Minimal 主题搭建。
+<ul class="post-list">
+  {% for post in site.posts %}
+    <li>
+      <span class="post-date">{{ post.date | date: "%Y年%m月%d日" }}</span>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      {% if post.categories %}
+        {% for cat in post.categories %}
+          <span class="category-tag">{{ cat }}</span>
+        {% endfor %}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
 
-## 关于我
+<hr style="margin: 30px 0; border-color: #ccc;">
 
-在这里写一段关于你自己的介绍。
+<h2>📌 关于本站</h2>
 
-## 近期计划
-
-- 学习 GitHub Pages
-- 记录学习笔记
-- 分享有趣的东西
-
-[查看所有文章 →](all-posts.md)
-
+<p>欢迎来到我的博客！这里会记录我的学习笔记、画和一些碎碎念。</p>
