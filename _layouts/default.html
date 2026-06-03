@@ -5,19 +5,16 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://unpkg.com/7.css" />
     <style>
-        /* 让整个页面有 Windows 7 的桌面背景感 */
         body {
             background-color: #ece9d8;
             padding: 40px;
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        /* 博客主窗口 */
         .blog-window {
             max-width: 900px;
             margin: 0 auto;
         }
-        /* 导航栏样式 */
         .nav-bar {
             background: #f0f0f0;
             padding: 8px 16px;
@@ -31,7 +28,6 @@
         .nav-bar a:hover {
             text-decoration: underline;
         }
-        /* 文章列表样式 */
         .post-list {
             list-style: none;
             padding: 0;
@@ -48,7 +44,6 @@
             font-size: 14px;
             margin-right: 16px;
         }
-        /* 分类标签样式 */
         .category-tag {
             background: #e0e0e0;
             padding: 2px 8px;
@@ -57,6 +52,8 @@
             margin-left: 10px;
         }
     </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
 </head>
 <body>
     <div class="blog-window">
@@ -78,7 +75,6 @@
                 <a href="/about.html"> 关于</a>
             </div>
             
-            <!-- 窗口内容区 -->
             <div class="window-body">
                 {{ content }}
             </div>
