@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<h1>📝 最近文章</h1>
+<h1> 最近文章</h1>
 
 <ul class="post-list">
   {% for post in site.posts %}
@@ -20,6 +20,6 @@ layout: default
 
 <hr style="margin: 30px 0; border-color: #ccc;">
 
-<h2>📌 关于本站</h2>
+<h2> 关于本站</h2>
 
 <p>欢迎来到我的博客！这里会记录我的学习笔记、画和一些碎碎念。</p>
