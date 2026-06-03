@@ -15,9 +15,9 @@ title: 画廊
 
   <div class="window" style="padding: 8px; text-align: center;">
     <div style="background: #f0f0f0; height: 150px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px;">
-      <span style="color: #999;">图片占位符 1</span>
+      <span style="color: #999;"><img src="/images/爱你老己明天见.jpg" style="width: 100%; height: 150px; object-fit: cover;"></span>
     </div>
-    <span>图片标题 1</span>
+    <span>2026.4.22</span>
   </div>
 
   <div class="window" style="padding: 8px; text-align: center;">
