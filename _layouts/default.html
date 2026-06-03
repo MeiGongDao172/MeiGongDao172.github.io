@@ -1,22 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>{{ page.title }} | {{ site.title }}</title>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://unpkg.com/7.css" />
+    <style>
+        /* 让整个页面有 Windows 7 的桌面背景感 */
+        body {
+            background-color: #ece9d8;
+            padding: 40px;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        /* 博客主窗口 */
+        .blog-window {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        /* 导航栏样式 */
+        .nav-bar {
+            background: #f0f0f0;
+            padding: 8px 16px;
+            border-bottom: 1px solid #ccc;
+        }
+        .nav-bar a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #000;
+        }
+        .nav-bar a:hover {
+            text-decoration: underline;
+        }
+        /* 文章列表样式 */
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .post-list li:last-child {
+            border-bottom: none;
+        }
+        .post-date {
+            color: #666;
+            font-size: 14px;
+            margin-right: 16px;
+        }
+        /* 分类标签样式 */
+        .category-tag {
+            background: #e0e0e0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div class="wrapper">
-        <header>
-            <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
-            <p>{{ site.description }}</p>
-        </header>
-        <section>
-            {{ content }}
-        </section>
-        <footer>
-            <p>© {{ site.time | date: '%Y' }} {{ site.title }}</p>
-        </footer>
+    <div class="blog-window">
+        <!-- 主窗口 -->
+        <div class="window">
+            <!-- 标题栏 -->
+            <div class="title-bar">
+                <div class="title-bar-text">{{ site.title }}</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            
+            <!-- 导航栏 -->
+            <div class="nav-bar">
+                <a href="/">🏠 首页</a>
+                <a href="/categories.html">📂 分类</a>
+                <a href="/about.html">📄 关于</a>
+            </div>
+            
+            <!-- 窗口内容区 -->
+            <div class="window-body">
+                {{ content }}
+            </div>
+            
+            <!-- 底部状态栏 -->
+            <div class="status-bar" style="background: #f0f0f0; padding: 4px 8px; border-top: 1px solid #ccc; font-size: 12px; color: #666;">
+                {{ site.description }} | © {{ site.time | date: '%Y' }}
+            </div>
+        </div>
     </div>
 </body>
 </html>
