@@ -11,39 +11,125 @@
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .blog-window {
-            max-width: 900px;
+        
+        /* 整体容器：侧边栏 + 主窗口 */
+        .main-container {
+            display: flex;
+            max-width: 1100px;
             margin: 0 auto;
+            gap: 20px;
+            align-items: flex-start;
         }
+        
+        /* 侧边栏样式 */
+        .sidebar {
+            width: 220px;
+            flex-shrink: 0;
+        }
+        
+        .sidebar .window {
+            margin-bottom: 20px;
+        }
+        
+        .sidebar .window-body {
+            padding: 12px;
+        }
+        
+        .sidebar h3 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar li {
+            margin-bottom: 8px;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #000;
+            font-size: 13px;
+        }
+        
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+        
+        .sidebar hr {
+            margin: 12px 0;
+            border-color: #ccc;
+        }
+        
+        /* 博主信息区域 */
+        .blogger-info {
+            text-align: center;
+        }
+        
+        .blogger-info .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        
+        .blogger-info .name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .blogger-info .bio {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        /* 主窗口样式 */
+        .blog-window {
+            flex: 1;
+        }
+        
         .nav-bar {
             background: #f0f0f0;
             padding: 8px 16px;
             border-bottom: 1px solid #ccc;
         }
+        
         .nav-bar a {
             margin-right: 20px;
             text-decoration: none;
             color: #000;
         }
+        
         .nav-bar a:hover {
             text-decoration: underline;
         }
+        
         .post-list {
             list-style: none;
             padding: 0;
         }
+        
         .post-list li {
             padding: 8px 0;
             border-bottom: 1px solid #e0e0e0;
         }
+        
         .post-list li:last-child {
             border-bottom: none;
         }
+        
         .post-date {
             color: #666;
             font-size: 14px;
             margin-right: 16px;
         }
+        
         .category-tag {
             background: #e0e0e0;
             padding: 2px 8px;
@@ -51,36 +137,101 @@
             font-size: 12px;
             margin-left: 10px;
         }
+        
+        /* 响应式：手机设备侧边栏自动换到下面 */
+        @media (max-width: 700px) {
+            body {
+                padding: 20px;
+            }
+            .main-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+            }
+        }
     </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
 </head>
 <body>
-    <div class="blog-window">
-        <div class="window">
-            <div class="title-bar">
-                <div class="title-bar-text">{{ site.title }}</div>
-                <div class="title-bar-controls">
-                    <button aria-label="Close" onclick="goBack()"></button>
+    <div class="main-container">
+        
+        <!-- 左侧边栏 -->
+        <div class="sidebar">
+            <!-- 博主信息卡片 -->
+            <div class="window">
+                <div class="title-bar">
+                    <div class="title-bar-text">关于博主</div>
+                </div>
+                <div class="window-body blogger-info">
+                    <img src="https://github.com/MeiGongDao172.png" alt="头像" class="avatar" onerror="this.src='https://via.placeholder.com/80?text=Avatar'">
+                    <div class="name">{{ site.title }}</div>
+                    <div class="bio">{{ site.description }}</div>
                 </div>
             </div>
             
-            <div class="nav-bar">
-                <a href="/"> 首页</a>
-                <a href="/categories.html"> 分类</a>
-                <a href="/gallery.html">画廊</a>
-                <a href="/about.html"> 关于</a>
+            <!-- 导航链接卡片 -->
+            <div class="window">
+                <div class="title-bar">
+                    <div class="title-bar-text">导航</div>
+                </div>
+                <div class="window-body">
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/categories.html">分类</a></li>
+                        <li><a href="/gallery.html">画廊</a></li>
+                        <li><a href="/about.html">关于</a></li>
+                    </ul>
+                </div>
             </div>
             
-            <div class="window-body">
-                {{ content }}
+            <!-- 分类列表卡片 -->
+            <div class="window">
+                <div class="title-bar">
+                    <div class="title-bar-text">分类</div>
+                </div>
+                <div class="window-body">
+                    <ul>
+                        {% for category in site.categories limit: 10 %}
+                            <li><a href="/categories.html#{{ category[0] }}">{{ category[0] }}</a> ({{ category[1] | size }})</li>
+                        {% endfor %}
+                        {% if site.categories.size > 10 %}
+                            <li><a href="/categories.html">更多...</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
-            
-            <div class="status-bar" style="background: #f0f0f0; padding: 4px 8px; border-top: 1px solid #ccc; font-size: 12px; color: #666;">
-                {{ site.description }} | © {{ site.time | date: '%Y' }}
+        </div>
+        
+        <!-- 右侧主窗口 -->
+        <div class="blog-window">
+            <div class="window">
+                <div class="title-bar">
+                    <div class="title-bar-text">{{ site.title }}</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close" onclick="goBack()"></button>
+                    </div>
+                </div>
+                
+                <div class="nav-bar">
+                    <a href="/">首页</a>
+                    <a href="/categories.html">分类</a>
+                    <a href="/gallery.html">画廊</a>
+                    <a href="/about.html">关于</a>
+                </div>
+                
+                <div class="window-body">
+                    {{ content }}
+                </div>
+                
+                <div class="status-bar" style="background: #f0f0f0; padding: 4px 8px; border-top: 1px solid #ccc; font-size: 12px; color: #666;">
+                    {{ site.description }} | © {{ site.time | date: '%Y' }}
+                </div>
             </div>
         </div>
     </div>
+    
     <script>
         function goBack() {
             if (confirm("确定要返回上一页吗？")) {
